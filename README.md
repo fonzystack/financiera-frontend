@@ -1,12 +1,26 @@
-# React + Vite
+Frontend de Aplicación Financiera
+Este repositorio contiene el código del frontend para una aplicación web de servicios financieros, desarrollada como una Aplicación de Página Única (SPA) utilizando React.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Características Principales
+Interfaz de Usuario Moderna: Construida con React y Vite para una experiencia de desarrollo rápida y un rendimiento óptimo.
 
-Currently, two official plugins are available:
+Diseño Profesional: Implementación de la librería de componentes Material-UI (MUI) para un diseño cohesivo, profesional y responsivo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Enrutamiento Fluido: Navegación del lado del cliente gestionada con React Router DOM, permitiendo vistas para la página de inicio, login, registro y un dashboard protegido.
 
-## Expanding the ESLint configuration
+Manejo de Estado: Formularios interactivos y componentes dinámicos controlados a través de los hooks de React, principalmente useState y useEffect.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Autenticación y Seguridad: Flujo de login que se comunica con un backend, maneja JSON Web Tokens (JWT) para la gestión de sesiones y los almacena de forma segura en el cliente.
+
+Rutas Protegidas: Implementación de un sistema que restringe el acceso a ciertas páginas (como el Dashboard) solo a usuarios autenticados.
+
+Stack Tecnológico Principal
+Librería: React
+
+Build Tool: Vite
+
+Enrutamiento: React Router DOM
+
+UI / Estilos: Material-UI (MUI)
+
+Lenguaje: JavaScript (ES6+)
