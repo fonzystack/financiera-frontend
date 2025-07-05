@@ -1,0 +1,54 @@
+/* src/components/Contacto.css */
+
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #bbbbbb;
+  border-radius: 3%;
+}
+
+.contact-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-section p {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 3rem auto;
+  color: #555;
+}
+
+.contact-form-react {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form-react input,
+.contact-form-react textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.contact-form-react button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form-react button:hover {
+  background-color: #2980b9;
+}

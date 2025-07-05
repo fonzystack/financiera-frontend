@@ -1,0 +1,80 @@
+/* src/pages/DashboardPage.css */
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-container h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: black;
+}
+
+.prospectos-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.prospecto-card {
+    background: #b5cca8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prospecto-card h3 {
+    margin-top: 0;
+}
+
+.prospecto-card .date {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: right;
+    margin-top: 1rem;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+}
+
+.error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 1rem;
+    border-radius: 5px;
+}
+/* Añade esto a DashboardPage.css */
+
+.prospecto-actions {
+    margin-top: 1rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.prospecto-actions select,
+.prospecto-actions textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.prospecto-actions textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.prospecto-actions button {
+    align-self: flex-end; /* Alinea el botón a la derecha */
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
