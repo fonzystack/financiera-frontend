@@ -1,7 +1,7 @@
 // src/App.jsx
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'; // 1. Importa Routes y Route
-import Header from './components/Header';
+import Header from './components/header';
 // Importa tus componentes de la página de inicio
 import Hero from './components/Hero';
 import Servicios from './components/Servicios';
@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPages';
 import HomePage from './pages/HomePage';
 import ProtectedRoute from './components/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage'; // Importa la página del dashboard si la tienes
+import Footer from './components/footer';
 
 // Creamos un componente para la página de inicio para mantenerlo ordenado
 
@@ -27,6 +28,7 @@ function App() {
           /> {/* 6. Ruta protegida para el dashboard */}
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

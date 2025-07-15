@@ -16,3 +16,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+html { 
+  scroll-behavior: smooth; /* Habilita el desplazamiento suave */
+}

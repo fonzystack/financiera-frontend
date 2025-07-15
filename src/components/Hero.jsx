@@ -36,7 +36,7 @@ function Hero() {
         {/* Usamos otro Box para centrar nuestro botón */}
         <Box sx={{ textAlign: 'center', mt: 4 }}>
           {/* El botón principal, con el estilo 'contained' (sólido) y tamaño grande. */}
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" href='/#contacto'>
             Comienza Ahora
           </Button>
         </Box>

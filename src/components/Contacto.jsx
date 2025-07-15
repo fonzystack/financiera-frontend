@@ -31,8 +31,9 @@ function Contacto() {
 
     return (
         // 1. Contenedor principal con la imagen de fondo
-        <Box 
-            component="section" 
+        <Box
+            id='contacto'
+            component="section"
             sx={{
                 py: 10, // Padding vertical
                 backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url("/fondo-contacto.avif")', // Imagen de fondo con un gradiente oscuro
@@ -89,9 +90,20 @@ function Contacto() {
                             fullWidth
                             sx={{ mb: 2 }}
                         />
-                        <Button 
-                            type="submit" 
-                            variant="contained" 
+                        <label htmlFor="checkbox" style={{ display: 'flex', alignItems: 'center' }}>
+                            <input
+                                type="checkbox"
+                                id="checkbox"
+                                checked={formData.checkbox}
+                                onChange={handleChange}
+                                style={{ marginRight: '8px' }}
+                            />
+                            Acepto los términos y condiciones
+                        </label>
+
+                        <Button
+                            type="submit"
+                            variant="contained"
                             size="large"
                             fullWidth
                             sx={{ py: 1.5, mt: 2 }} // Padding y margen para el botón

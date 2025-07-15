@@ -3,6 +3,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function Header() {
   return (
@@ -13,7 +14,7 @@ function Header() {
         {/* Typography es para renderizar texto. 'variant="h6"' le da el estilo de un título. */}
         <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            Adelante
+            SOMA
           </Link>
         </Typography>
 
@@ -22,7 +23,7 @@ function Header() {
           {/* Usamos el componente Button de MUI. 'color="inherit"' hace que sea blanco. */}
           <Button color="inherit" component={Link} to="/">Inicio</Button>
           <Button color="inherit">Servicios</Button>
-          <Button color="inherit">Contacto</Button>
+          <Button color="inherit" href='#contacto'>Contacto</Button>
           {/* 'variant="contained"' le da un fondo. 'component={Link}' lo hace comportarse como un Link de React Router. */}
           <Button variant="contained" color="secondary" component={Link} to="/login">
             Login Asesor
