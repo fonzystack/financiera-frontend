@@ -11,9 +11,9 @@ function Header() {
       {/* Toolbar ayuda a organizar los elementos horizontalmente con un padding estándar. */}
       <Toolbar>
         {/* Typography es para renderizar texto. 'variant="h6"' le da el estilo de un título. */}
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            Financiera App
+            Adelante
           </Link>
         </Typography>
 

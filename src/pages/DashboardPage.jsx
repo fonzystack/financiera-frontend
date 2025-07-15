@@ -1,92 +1,13 @@
 // src/pages/DashboardPage.jsx
 
-// src/pages/DashboardPage.jsx
-
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // <-- 1. IMPORTAMOS useNavigate
+import { Box, Button } from '@mui/material';     // <-- Importamos los componentes de MUI necesarios
 import './DashboardPage.css';
 import RegisterAdvisorForm from '../components/RegisterAdvisorform';
 
-function DashboardPage() {
-    const [prospectos, setProspectos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const user = JSON.parse(localStorage.getItem('user'));
-
-    // Esta función ahora puede ser llamada para recargar los datos
-    const fetchProspectos = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) throw new Error('No se encontró token de autenticación.');
-
-            const response = await fetch('http://localhost:4000/api/prospectos', {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-
-            if (!response.ok) throw new Error('No estás autorizado para ver esta información.');
-
-            const data = await response.json();
-            setProspectos(data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    // useEffect llama a la función para cargar los datos al inicio
-    useEffect(() => {
-        fetchProspectos();
-    }, []);
-
-    // Esta función se pasará a cada tarjeta para manejar la actualización
-    const handleUpdateProspecto = async (id, updatedData) => {
-        try {
-            const token = localStorage.getItem('token');
-            await fetch(`http://localhost:4000/api/prospectos/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(updatedData)
-            });
-            // Recargamos los datos para ver los cambios reflejados
-            fetchProspectos(); 
-        } catch (error) {
-            console.error("Error al actualizar:", error);
-            alert("No se pudo guardar los cambios.");
-        }
-    };
-
-    if (loading) return <p>Cargando prospectos...</p>;
-    if (error) return <p className="error-message">{error}</p>;
-
-    return (
-        <div className="dashboard-container">
-            <h2>Panel de Asesores - Prospectos</h2>
-            {/* --- RENDERIZADO CONDICIONAL --- */}
-            {user && user.role === 'admin' && <RegisterAdvisorForm />}
-            <div className="prospectos-list">
-                {prospectos.length > 0 ? (
-                    prospectos.map(prospecto => (
-                        <ProspectoCard 
-                            key={prospecto._id} 
-                            prospecto={prospecto} 
-                            onUpdate={handleUpdateProspecto}
-                        />
-                    ))
-                ) : (
-                    <p>No hay prospectos para mostrar.</p>
-                )}
-            </div>
-        </div>
-    );
-}
-
-
-// --- NUEVO COMPONENTE INTERNO PARA CADA TARJETA ---
+// --- El componente para cada tarjeta de prospecto (sin cambios) ---
 function ProspectoCard({ prospecto, onUpdate }) {
-    // Estado interno para manejar los campos del formulario de esta tarjeta específica
     const [status, setStatus] = useState(prospecto.status);
     const [notes, setNotes] = useState(prospecto.notes);
 
@@ -99,7 +20,6 @@ function ProspectoCard({ prospecto, onUpdate }) {
             <h3>{prospecto.name}</h3>
             <p><strong>Email:</strong> {prospecto.email}</p>
             <p><strong>Teléfono:</strong> {prospecto.phone || 'No proporcionado'}</p>
-            
             <div className="prospecto-actions">
                 <select value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value="Nuevo">Nuevo</option>
@@ -114,8 +34,63 @@ function ProspectoCard({ prospecto, onUpdate }) {
                 />
                 <button onClick={handleSave}>Guardar</button>
             </div>
-
             <p className="date">Registrado: {new Date(prospecto.createdAt).toLocaleDateString()}</p>
+        </div>
+    );
+}
+
+
+// --- El componente principal de la página ---
+function DashboardPage() {
+    // --- ZONA DE LÓGICA (EL CEREBRO) ---
+    const navigate = useNavigate(); // <-- 2. OBTENEMOS LA FUNCIÓN DE NAVEGACIÓN
+    const [prospectos, setProspectos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    // --- NUEVA FUNCIÓN PARA CERRAR SESIÓN ---
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
+    };
+
+    const fetchProspectos = async () => { /* ...tu función fetchProspectos se queda igual... */ };
+    useEffect(() => { fetchProspectos(); }, []);
+    const handleUpdateProspecto = async (id, updatedData) => { /* ...tu función handleUpdateProspecto se queda igual... */ };
+
+    if (loading) return <p>Cargando prospectos...</p>;
+    if (error) return <p className="error-message">{error}</p>;
+
+
+    // --- ZONA VISUAL (EL CUERPO) ---
+    return (
+        <div className="dashboard-container">
+            {/* --- 3. AQUÍ AÑADIMOS LA BARRA SUPERIOR CON EL TÍTULO Y EL BOTÓN --- */}
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <h2>Panel de Asesores - Prospectos</h2>
+                <Button variant="outlined" color="error" onClick={handleLogout}>
+                    Cerrar Sesión
+                </Button>
+            </Box>
+            
+            {user && user.role === 'admin' && <RegisterAdvisorForm />}
+            
+            <div className="prospectos-list">
+                {prospectos.length > 0 ? (
+                    // El .map() que ya tenías está en el lugar perfecto.
+                    prospectos.map(prospecto => (
+                        <ProspectoCard 
+                            key={prospecto._id} 
+                            prospecto={prospecto} 
+                            onUpdate={handleUpdateProspecto}
+                        />
+                    ))
+                ) : (
+                    <p>No hay prospectos para mostrar.</p>
+                )}
+            </div>
         </div>
     );
 }
