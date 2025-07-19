@@ -15,7 +15,7 @@ function Contacto() {
         e.preventDefault();
         setMessage('');
         try {
-            const response = await fetch('http://localhost:4000/api/prospectos', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/prospectos`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

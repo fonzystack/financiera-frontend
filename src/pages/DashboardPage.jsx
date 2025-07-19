@@ -86,7 +86,7 @@ function DashboardPage() {
     const handleUpdateProspecto = async (id, updatedData) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:4000/api/prospectos/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/prospectos/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
